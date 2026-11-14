@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GUNALTECH Smart Task Manager dashboard">
+  <title>GUNALTECH | Smart Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="GUNALTECH home">
+        <span class="brand-mark">G</span><span>GUNALTECH<small>SMART WORKSPACE</small></span>
+      </a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span>▦</span> Overview</a>
+        <a class="nav-link" href="#tasks"><span>✓</span> My Tasks <b class="nav-count" id="navTaskCount">5</b></a>
+        <a class="nav-link" href="#projects"><span>▤</span> Projects</a>
+        <a class="nav-link" href="#team"><span>♧</span> Team</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon">✦</span><strong>Need a hand?</strong><p>Your workspace, all in one place.</p></div>
+        <div class="profile"><div class="avatar">GG</div><div><strong>Gunal GJ</strong><small>Workspace Admin</small></div><span class="profile-menu">···</span></div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-label="Toggle menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong>Overview</strong></div>
+        <div class="top-actions"><span class="today-label" id="todayLabel"></span><button class="icon-button" aria-label="Notifications">♧</button><div class="avatar small-avatar">GG</div></div>
+      </header>
+
+      <section class="welcome-row">
+        <div><p class="eyebrow">YOUR WORKSPACE</p><h1>Good to see you, Gunal <span>✦</span></h1><p class="subheading">Here’s what’s happening with your projects today.</p></div>
+        <button class="primary-button" id="newTaskButton">＋ <span>New task</span></button>
+      </section>
+
+      <section class="stats-grid" aria-label="Task summary">
+        <article class="stat-card"><div class="stat-top"><span>Total tasks</span><span class="stat-icon purple">▤</span></div><strong id="totalTasks">5</strong><small>Across your workspace</small></article>
+        <article class="stat-card"><div class="stat-top"><span>In progress</span><span class="stat-icon blue">◷</span></div><strong id="progressTasks">2</strong><small>Currently being worked on</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Completed</span><span class="stat-icon green">✓</span></div><strong id="completedTasks">2</strong><small>Great work so far</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Overdue</span><span class="stat-icon orange">!</span></div><strong id="overdueTasks">1</strong><small>Needs your attention</small></article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel tasks-panel" id="tasks">
+          <div class="panel-heading"><div><h2>Recent tasks</h2><p>Keep track of your team's priorities.</p></div><a href="#tasks" class="text-link">View all →</a></div>
+          <div class="task-toolbar"><label class="search-box"><span>⌕</span><input id="taskSearch" type="search" placeholder="Search tasks..." aria-label="Search tasks"></label><select id="statusFilter" aria-label="Filter tasks by status"><option value="all">All status</option><option value="todo">To do</option><option value="progress">In progress</option><option value="done">Completed</option></select></div>
+          <div class="task-list" id="taskList"></div>
+        </article>
+        <aside class="panel progress-panel" id="projects">
+          <div class="panel-heading"><div><h2>Project progress</h2><p>Workspace snapshot</p></div><span class="more">···</span></div>
+          <div class="project-summary"><div class="project-logo">✦</div><div><strong>Website Revamp</strong><small>Design & Development</small></div></div>
+          <div class="progress-meta"><span>Overall progress</span><strong>68%</strong></div>
+          <div class="progress-track"><span style="width:68%"></span></div>
+          <div class="progress-foot"><span>17 of 25 tasks completed</span><span class="green-text">On track</span></div>
+          <div class="team-block" id="team"><span class="team-title">TEAM MEMBERS</span><div class="team-avatars"><span class="avatar peach">AR</span><span class="avatar lilac">SK</span><span class="avatar mint">MJ</span><span class="avatar more-avatar">+3</span><span class="team-caption">6 members</span></div></div>
+        </aside>
+      </section>
+      <footer>© <span id="year"></span> GUNALTECH SOLUTIONS <span>•</span> Smart Task Management System</footer>
+    </main>
+  </div>
+
+  <dialog class="task-dialog" id="taskDialog">
+    <form id="taskForm">
+      <div class="dialog-heading"><div><p class="eyebrow">WORKSPACE</p><h2>Create a task</h2></div><button type="button" class="close-button" id="closeDialog" aria-label="Close">×</button></div>
+      <label>Task title<input name="title" required maxlength="90" placeholder="e.g. Prepare project proposal"></label>
+      <label>Assignee<input name="assignee" maxlength="40" placeholder="e.g. Gunal GJ"></label>
+      <label>Status<select name="status"><option value="todo">To do</option><option value="progress">In progress</option><option value="done">Completed</option></select></label>
+      <div class="dialog-actions"><button type="button" class="secondary-button" id="cancelDialog">Cancel</button><button class="primary-button" type="submit">Create task</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
